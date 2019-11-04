@@ -9,23 +9,34 @@ public class PlayerMove : MonoBehaviour
     private float rotX;
     private float rotY;
     private Rigidbody body;
+    private CapsuleCollider capsule;
 
     [Header("Movement")]
-    public float moveSpeed;
-    public float jumpForce;
+    public float moveSpeed; //150
+    public float jumpForce; //120
 
     [Header("Camera")]
-    public float xSensitivity;
-    public float ySensitivity;
+    public float xSensitivity; //100
+    public float ySensitivity; //100
     public float clamp;
     
     // Start is called before the first frame update
     void Start()
     {
         body = GetComponent<Rigidbody>();
+        capsule = GetComponent<CapsuleCollider>();
         rotX = lookDirection.x;
         rotY = lookDirection.y;
         Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    bool GroundCheck()
+    {
+        float distToGround = capsule.bounds.extents.y;
+
+
+
+        return true;
     }
 
     void Jump()
@@ -54,8 +65,6 @@ public class PlayerMove : MonoBehaviour
         lookDirection.Set(rotX, rotY, 0.0f);
 
         body.rotation = Quaternion.Euler(lookDirection);
-
-
 
         //Move character
         moveDirection = (horiMovement * transform.right + vertMovement * transform.forward).normalized;
