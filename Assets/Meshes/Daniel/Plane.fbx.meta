@@ -1,33 +1,14 @@
 fileFormatVersion: 2
-guid: d3e766936a74a8a4b8abf8399bcacee3
+guid: 7197b2ce52bfa2e45b612ec5460097c0
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Cylinder
-    100004: Cylinder.001
-    100006: Plane
-    100008: Plane.001
     400000: //RootNode
-    400002: Cylinder
-    400004: Cylinder.001
-    400006: Plane
-    400008: Plane.001
-    2100000: Material.001
-    2100002: Material.002
-    2100004: Material
-    2300000: Cylinder
-    2300002: Cylinder.001
-    2300004: Plane
-    2300006: Plane.001
-    3300000: Cylinder
-    3300002: Cylinder.001
-    3300004: Plane
-    3300006: Plane.001
+    2100000: No Name
+    2300000: //RootNode
+    3300000: //RootNode
     4300000: Plane
-    4300002: Cylinder
-    4300004: Cylinder.001
-    4300006: Plane.001
   externalObjects: {}
   materials:
     importMaterials: 1
