@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
+    public bool growing = false;
+    public bool shrunk = false;
+    public float growth;
     private Vector3 moveDirection;
     private Vector3 lookDirection;
     private float rotX;
@@ -33,6 +36,26 @@ public class PlayerMove : MonoBehaviour
         body.AddForce(Vector3.up * jumpForce);
     }
 
+    void Shrink()
+    {
+        if (!shrunk)
+        {
+            growth = -0.05f;
+            shrunk = true;
+        }
+        else
+        {
+            growth = 0.05f;
+            shrunk = false;
+        }
+        growing = true;
+        while(growing){
+            body.transform.localScale += new Vector3(0.1f, 0.1f, 0.1f) * growth * Time.deltaTime;
+            if ((body.transform.localScale.z <= 0.25f) || (body.transform.localScale.z >= 2.0f)){
+                growing = false;
+            }
+        }
+    }
     // Update is called once per frame
     void Update()
     {
@@ -41,12 +64,15 @@ public class PlayerMove : MonoBehaviour
         float vertMovement = Input.GetAxis("Vertical");
         float mouseX = (Input.GetAxis("Mouse Y") * -1);
         float mouseY = Input.GetAxis("Mouse X");
+     
         //And check for jump
         if (Input.GetAxis("Jump") > 0) { Jump(); }
 
+        if (Input.GetKeyDown("e")){ Shrink(); }
+
         //Move camera
-        rotX += mouseX * xSensitivity * Time.deltaTime;
-        rotY += mouseY * ySensitivity * Time.deltaTime;
+        rotX += mouseX * xSensitivity * Time.deltaTime *10;
+        rotY += mouseY * ySensitivity * Time.deltaTime*10;
 
         //Clamp x rotation to prevent flipping
         rotX = Mathf.Clamp(rotX, -clamp, clamp);
