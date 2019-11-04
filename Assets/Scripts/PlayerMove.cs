@@ -30,6 +30,10 @@ public class PlayerMove : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
+    public Vector3 GetLookDirection()
+    {
+        return lookDirection;
+    }
     bool GroundCheck()
     {
         float distToGround = capsule.bounds.extents.y;

@@ -25,7 +25,7 @@ public class Conveyor : MonoBehaviour
         //item.transform.Translate(movingDirection * pushForce * Time.deltaTime);
     }
 
-    void Invert()
+    public void Invert()
     {
         movingDirection *= -1;
     }
