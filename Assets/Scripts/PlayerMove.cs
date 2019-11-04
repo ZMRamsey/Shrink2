@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     public bool growing = false;
-    public bool shrunk = false;
+    public bool shrunk = true;
     public float growth;
     private Vector3 moveDirection;
     private Vector3 lookDirection;
@@ -42,19 +42,16 @@ public class PlayerMove : MonoBehaviour
         {
             growth = -0.05f;
             shrunk = true;
+            growing = true;
         }
         else
         {
+
             growth = 0.05f;
             shrunk = false;
+            growing = true;
         }
-        growing = true;
-        while(growing){
-            body.transform.localScale += new Vector3(0.1f, 0.1f, 0.1f) * growth * Time.deltaTime;
-            if ((body.transform.localScale.z <= 0.25f) || (body.transform.localScale.z >= 2.0f)){
-                growing = false;
-            }
-        }
+       
     }
     // Update is called once per frame
     void Update()
@@ -87,5 +84,15 @@ public class PlayerMove : MonoBehaviour
         moveDirection = (horiMovement * transform.right + vertMovement * transform.forward).normalized;
         moveDirection *= moveSpeed * Time.deltaTime;
         body.velocity = moveDirection;
+
+
+        while (growing)
+        {
+            body.transform.localScale += new Vector3(0.1f, 0.1f, 0.1f) * growth;
+           if ((body.transform.localScale.z <= 0.2f) || (body.transform.localScale.z >= 1.0f))
+            {
+                growing = false;
+            }
+        }
     }
 }
