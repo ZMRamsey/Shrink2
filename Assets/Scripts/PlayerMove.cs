@@ -33,10 +33,8 @@ public class PlayerMove : MonoBehaviour
     bool GroundCheck()
     {
         float distToGround = capsule.bounds.extents.y;
-
-
-
-        return true;
+        
+        return Physics.Raycast(transform.position, -Vector3.up, distToGround = 0.5f);
     }
 
     void Jump()
@@ -53,7 +51,7 @@ public class PlayerMove : MonoBehaviour
         float mouseX = (Input.GetAxis("Mouse Y") * -1);
         float mouseY = Input.GetAxis("Mouse X");
         //And check for jump
-        if (Input.GetAxis("Jump") > 0) { Jump(); }
+        if ((Input.GetAxis("Jump") > 0) && GroundCheck()) { Jump(); }
 
         //Move camera
         rotX += mouseX * xSensitivity * Time.deltaTime;
@@ -69,6 +67,7 @@ public class PlayerMove : MonoBehaviour
         //Move character
         moveDirection = (horiMovement * transform.right + vertMovement * transform.forward).normalized;
         moveDirection *= moveSpeed * Time.deltaTime;
+        if (!GroundCheck()) { moveDirection.y = 0; }
         body.velocity = moveDirection;
     }
 }
