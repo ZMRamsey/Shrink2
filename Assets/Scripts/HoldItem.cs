@@ -9,6 +9,7 @@ public class HoldItem : MonoBehaviour
     public float reach;
     public PlayerMove movement;
     GameObject item;
+    public GameObject camera;
     public GameObject guide;
     public float push;
 
@@ -19,8 +20,8 @@ public class HoldItem : MonoBehaviour
 
     void PickUp()
     {
-        Debug.DrawRay(transform.position, guide.transform.forward, Color.magenta);
-        if (Physics.Raycast(transform.position, guide.transform.forward, out RaycastHit hit, reach))
+        Debug.DrawRay(transform.position, camera.transform.forward, Color.magenta);
+        if (Physics.Raycast(transform.position, camera.transform.forward, out RaycastHit hit, reach))
         {
             item = hit.collider.gameObject;
             if (item.tag == "Box")
