@@ -11,19 +11,30 @@ public class Conveyor : MonoBehaviour
 
     public float pushForce;
 
-    // Start is called before the first frame update
+    public bool active;
+
     void Start()
     {
-        movingDirection = transform.up * -1;
+        movingDirection = transform.up;
     }
 
     private void OnCollisionStay(Collision collision)
     {
         item = collision.gameObject.GetComponent<Rigidbody>();
-        //item.AddForce(movingDirection * pushForce);
-        item.velocity = pushForce * movingDirection * Time.deltaTime;
-        //item.transform.Translate(movingDirection * pushForce * Time.deltaTime);
+        if (active)
+        {
+           
+            //item.AddForce(movingDirection * pushForce);
+            item.velocity = pushForce * movingDirection * Time.deltaTime;
+            //item.transform.Translate(movingDirection * pushForce * Time.deltaTime);
+        }
     }
+
+    public void SetActivate(bool state)
+    {
+        active = state;
+    }
+
 
     public void Invert()
     {

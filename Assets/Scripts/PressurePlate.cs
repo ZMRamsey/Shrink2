@@ -14,6 +14,7 @@ public class PressurePlate : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         isPressed = true;
+        Debug.Log("PRESSED");
     }
 
     private void OnCollisionExit(Collision collision)
