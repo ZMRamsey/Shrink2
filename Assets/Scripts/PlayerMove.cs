@@ -4,74 +4,95 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    private Vector3 moveDirection;
-    private Vector3 lookDirection;
-    private float rotX;
-    private float rotY;
+    [SerializeField] private string horizontalInputName;
+    [SerializeField] private string verticalInputName;
+    [SerializeField] private float movementSpeed;
+
+    private CharacterController charController;
     private Rigidbody body;
-    private CapsuleCollider capsule;
+   
 
-    [Header("Movement")]
-    public float moveSpeed; //150
-    public float jumpForce; //120
+    [SerializeField] private AnimationCurve jumpFallOff;
+    [SerializeField] private float jumpMultiplier;
+    [SerializeField] private KeyCode JumpKey;
+    private bool isJumping;
 
-    [Header("Camera")]
-    public float xSensitivity; //100
-    public float ySensitivity; //100
-    public float clamp;
-    
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private KeyCode ShrinkKey;
+    private bool isShrinking;
+    private bool shrunk;
+
+    private void Awake()
     {
+        charController = GetComponent<CharacterController>();
         body = GetComponent<Rigidbody>();
-        capsule = GetComponent<CapsuleCollider>();
-        rotX = lookDirection.x;
-        rotY = lookDirection.y;
-        Cursor.lockState = CursorLockMode.Locked;
+
     }
 
-    public Vector3 GetLookDirection()
+    private void Update()
     {
-        return gameObject.transform.rotation.eulerAngles;
+        PlayerMovement();
+        JumpInput();
+        ShrinkInput();
     }
-    bool GroundCheck()
+
+    private void PlayerMovement()
     {
-        float distToGround = capsule.bounds.extents.y;
-        
-        return Physics.Raycast(transform.position, -Vector3.up, distToGround = 0.5f);
+        float vertInput = Input.GetAxis(verticalInputName) * movementSpeed;
+        float horizInput = Input.GetAxis(horizontalInputName) * movementSpeed;
+
+        Vector3 forwardMovement = transform.forward * vertInput;
+        Vector3 rightMovement = transform.right * horizInput;
+
+        charController.SimpleMove(forwardMovement + rightMovement);
     }
 
-    void Jump()
+    private void JumpInput()
     {
-        body.AddForce(Vector3.up * jumpForce);
+        if (Input.GetKeyDown(JumpKey) && !isJumping)
+        {
+            
+            isJumping = true;
+            StartCoroutine(JumpEvent());
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+
+    private IEnumerator JumpEvent()
     {
-        //Take inputs
-        float horiMovement = Input.GetAxis("Horizontal");
-        float vertMovement = Input.GetAxis("Vertical");
-        float mouseX = (Input.GetAxis("Mouse Y") * -1);
-        float mouseY = Input.GetAxis("Mouse X");
-        //And check for jump
-        if ((Input.GetAxis("Jump") > 0) && GroundCheck()) { Jump(); }
+        charController.slopeLimit = 90.0f;
+        float timeInAir = 0.0f;
 
-        //Move camera
-        rotX += mouseX * xSensitivity * Time.deltaTime;
-        rotY += mouseY * ySensitivity * Time.deltaTime;
+        do
+        {
+            float jumpForce = jumpFallOff.Evaluate(timeInAir);
+            charController.Move(Vector3.up * jumpForce * jumpMultiplier * Time.deltaTime);
+            timeInAir = Time.deltaTime;
+            yield return null;
+        } while (!charController.isGrounded && charController.collisionFlags != CollisionFlags.Above);
 
-        //Clamp x rotation to prevent flipping
-        rotX = Mathf.Clamp(rotX, -clamp, clamp);
+        charController.slopeLimit = 45.0f;
+        isJumping = false;
 
-        lookDirection.Set(rotX, rotY, 0.0f);
-
-        body.rotation = Quaternion.Euler(lookDirection);
-
-        //Move character
-        moveDirection = (horiMovement * transform.right + vertMovement * transform.forward).normalized;
-        moveDirection *= moveSpeed * Time.deltaTime;
-        if (!GroundCheck()) { moveDirection.y = 0; }
-        body.velocity = moveDirection;
     }
+    private void ShrinkInput()
+    {
+        if (Input.GetKeyDown(ShrinkKey) && !isShrinking && !shrunk)
+        {
+
+            Vector3 newCenter = new Vector3(0f, 0.5f, 0f);
+            body.transform.localScale -= newCenter;
+            shrunk = true;
+            isShrinking = true;
+
+        }
+        else if (Input.GetKeyDown(ShrinkKey) && !isShrinking && shrunk)
+        { 
+            Vector3 newCenter = new Vector3(0f, 0.5f, 0f);
+            body.transform.localScale += newCenter;
+            shrunk = false;
+        }
+        isShrinking = false;
+
+    }
+   
 }
