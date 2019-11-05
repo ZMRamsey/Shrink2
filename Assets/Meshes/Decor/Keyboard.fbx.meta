@@ -1,23 +1,15 @@
 fileFormatVersion: 2
-guid: 3f7b8a2bcd658814285217202d23bc05
+guid: eebd9970f3c48004daf720fb44712ffa
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: Cube
-    100002: //RootNode
-    100004: Plane
-    400000: Cube
-    400002: //RootNode
-    400004: Plane
-    2100000: No Name
+    100000: //RootNode
+    400000: //RootNode
+    2100000: Material
     2100002: Material.001
-    2100004: Material.002
-    2300000: Cube
-    2300002: Plane
-    3300000: Cube
-    3300002: Plane
-    4300000: Cube
-    4300002: Plane
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Box074
   externalObjects: {}
   materials:
     importMaterials: 1

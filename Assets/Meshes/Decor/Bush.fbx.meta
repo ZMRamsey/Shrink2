@@ -1,39 +1,31 @@
 fileFormatVersion: 2
-guid: f1b656ac7ac88644e82860b54fe60308
+guid: 4c79b999fce69704caa6865da6eeb7a5
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: pCube10
-    100002: pCube11
-    100004: pCube5
-    100006: pCube6
-    100008: pCube9
-    100010: //RootNode
-    400000: pCube10
-    400002: pCube11
-    400004: pCube5
-    400006: pCube6
-    400008: pCube9
-    400010: //RootNode
-    2100000: lambert1
-    2100002: lambert1.002
-    2300000: pCube10
-    2300002: pCube11
-    2300004: pCube5
-    2300006: pCube6
-    2300008: pCube9
-    2300010: //RootNode
-    3300000: pCube10
-    3300002: pCube11
-    3300004: pCube5
-    3300006: pCube6
-    3300008: pCube9
-    3300010: //RootNode
-    4300000: pCube5
-    4300002: pCube6
-    4300004: pCube10
-    4300006: pCube11
-    4300008: pCube9
+    100000: BezierCurve
+    100002: //RootNode
+    100004: Cylinder
+    100006: Sphere.008
+    400000: BezierCurve
+    400002: //RootNode
+    400004: Cylinder
+    400006: Sphere.008
+    2100000: Material.002
+    2100002: Material.003
+    2100004: Material.001
+    2300000: BezierCurve
+    2300002: Cylinder
+    2300004: Sphere.008
+    2300006: //RootNode
+    3300000: BezierCurve
+    3300002: Cylinder
+    3300004: Sphere.008
+    3300006: //RootNode
+    4300000: Cylinder
+    4300002: BezierCurve
+    4300004: Sphere.008
+    9500000: //RootNode
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -86,8 +78,8 @@ ModelImporter:
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 1
-    hasPreviousCalculatedGlobalScale: 0
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -114,7 +106,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

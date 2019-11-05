@@ -17,7 +17,12 @@ ModelImporter:
     3300002: Torus001
     4300000: Cylinder001
     4300002: Torus001
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: 8764600a23d3af84288c02b4e5f6685c, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
