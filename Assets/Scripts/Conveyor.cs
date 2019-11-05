@@ -14,7 +14,7 @@ public class Conveyor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        movingDirection = transform.forward;
+        movingDirection = transform.up * -1;
     }
 
     private void OnCollisionStay(Collision collision)

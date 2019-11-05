@@ -10,7 +10,6 @@ public class HoldItem : MonoBehaviour
     public PlayerMove movement;
     GameObject item;
     public GameObject guide;
-    public float push;
 
     private void Start()
     {
@@ -22,12 +21,11 @@ public class HoldItem : MonoBehaviour
         Debug.DrawRay(transform.position, guide.transform.forward, Color.magenta);
         if (Physics.Raycast(transform.position, guide.transform.forward, out RaycastHit hit, reach))
         {
-            item = hit.collider.gameObject;
+            item = hit.collider.gameObject; 
             if (item.tag == "Box")
             {
                 //Pick up box
                 holding = true;
-                //item.GetComponent<Collider>().enabled = false;
             }
             else if (item.tag == "Button")
             {
