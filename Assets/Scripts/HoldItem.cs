@@ -10,28 +10,24 @@ public class HoldItem : MonoBehaviour
     public PlayerMove movement;
     GameObject item;
     public GameObject guide;
+    public float push;
 
     private void Start()
     {
         
-        //guide = gameObject.GetComponentInChildren(
     }
 
-    void pickUp()
+    void PickUp()
     {
-        RaycastHit hit;
-        Debug.DrawRay(transform.position, lookDirection, Color.magenta);
-        if (Physics.Raycast(transform.position, lookDirection, out hit, reach))
+        Debug.DrawRay(transform.position, guide.transform.forward, Color.magenta);
+        if (Physics.Raycast(transform.position, guide.transform.forward, out RaycastHit hit, reach))
         {
             item = hit.collider.gameObject;
             if (item.tag == "Box")
             {
                 //Pick up box
                 holding = true;
-                while (holding)
-                {
-                    item.gameObject.transform.position = guide.transform.position;
-                }
+                //item.GetComponent<Collider>().enabled = false;
             }
             else if (item.tag == "Button")
             {
@@ -44,21 +40,24 @@ public class HoldItem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        lookDirection = movement.GetLookDirection();
+        //lookDirection = movement.GetLookDirection();
+        lookDirection = guide.transform.rotation.eulerAngles;
 
         if (Input.GetAxis("Interact") > 0)
         {
             if (!holding)
             {
-                Debug.Log("e pressed");
-                //pickup
-                pickUp();
+                PickUp();
             }
             else
             {
-                //drop
                 holding = false;
             }
+        }
+        if (holding)
+        {
+            item.transform.position = guide.transform.position;
+            item.transform.rotation = Quaternion.Euler(guide.transform.up);
         }
     }
 }

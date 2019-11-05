@@ -32,7 +32,7 @@ public class PlayerMove : MonoBehaviour
 
     public Vector3 GetLookDirection()
     {
-        return lookDirection;
+        return gameObject.transform.rotation.eulerAngles;
     }
     bool GroundCheck()
     {

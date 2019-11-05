@@ -14,12 +14,10 @@ public class PressurePlate : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         isPressed = true;
-        Debug.Log("ON");
     }
 
     private void OnCollisionExit(Collision collision)
     {
         isPressed = false;
-        Debug.Log("OFF");
     }
 }
