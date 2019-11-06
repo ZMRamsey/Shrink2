@@ -461,10 +461,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e91aeeedadf07ca45835f5f1cf4c1c68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reach: 0
-  movement: {fileID: 0}
-  guide: {fileID: 0}
-  push: 0
+  reach: 1.25
+  camera: {fileID: 1450731820}
+  guide: {fileID: 1612054063}
+  HoldKey: 101
 --- !u!4 &780285949 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7274683456144553608, guid: 8f8f6b9958a548d478702ec3e80c346b,
@@ -579,6 +579,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7274683455565857141}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1450731820 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7274683454407780438, guid: 8f8f6b9958a548d478702ec3e80c346b,
+    type: 3}
+  m_PrefabInstance: {fileID: 7274683455565857141}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1450731821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -594,7 +600,8 @@ MonoBehaviour:
   mouseXInputName: Mouse X
   mouseYInputName: Mouse Y
   mouseSensitivity: 150
-  playerBody: {fileID: 0}
+  Guide: {fileID: 1612054063}
+  playerBody: {fileID: 780285949}
 --- !u!1 &1516283120
 GameObject:
   m_ObjectHideFlags: 0
@@ -723,9 +730,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1612054063}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.5}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1.5000002}
+  m_LocalScale: {x: 1.196168, y: 1.0135309, z: 1.2008767}
   m_Children: []
   m_Father: {fileID: 780285949}
   m_RootOrder: 2
@@ -1056,7 +1063,7 @@ PrefabInstance:
     - target: {fileID: 7274683456144553613, guid: 8f8f6b9958a548d478702ec3e80c346b,
         type: 3}
       propertyPath: ShrinkKey
-      value: 101
+      value: 113
       objectReference: {fileID: 0}
     - target: {fileID: 7274683456144553613, guid: 8f8f6b9958a548d478702ec3e80c346b,
         type: 3}
@@ -1133,5 +1140,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7274683456144553612, guid: 8f8f6b9958a548d478702ec3e80c346b, type: 3}
+    - {fileID: 7274683456144553615, guid: 8f8f6b9958a548d478702ec3e80c346b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8f8f6b9958a548d478702ec3e80c346b, type: 3}
