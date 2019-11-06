@@ -21,6 +21,9 @@ public class PlayerMove : MonoBehaviour
     private bool isShrinking;
     private bool shrunk;
 
+    private float heightVal;
+    private float heightRad;
+
     private void Awake()
     {
         charController = GetComponent<CharacterController>();
@@ -74,26 +77,45 @@ public class PlayerMove : MonoBehaviour
         isJumping = false;
 
     }
+
+    private IEnumerator ShrinkEvent()
+    {
+       if(shrunk)
+        {
+            heightVal = 0.5f;
+            heightRad = 0.125f;
+        }
+        else
+        {
+            heightVal = -0.5f;
+            heightRad = -0.125f;
+        }
+        
+        do
+        {
+            yield return new WaitForSeconds(0.01f);
+            charController.height += heightVal;
+            charController.radius += heightRad;
+            if (charController.height == 0.5f || charController.height == 2.0f){
+                isShrinking = false;
+            }
+        } while (isShrinking);
+    }
     private void ShrinkInput()
     {
         if (Input.GetKeyDown(ShrinkKey) && !isShrinking && !shrunk)
         {
-          
-            charController.height = 0.5f;
-            Debug.Log(charController.radius);
-            charController.radius = 0.125f;
-            shrunk = true;
             isShrinking = true;
-
+            StartCoroutine(ShrinkEvent());    
+            shrunk = true;
         }
         else if (Input.GetKeyDown(ShrinkKey) && !isShrinking && shrunk)
-        { 
-            Vector3 newCenter = new Vector3(0.5f, 0.5f, 0f);
-            charController.height =2.0f;
-            charController.radius = 0.5f;
+        {
+            isShrinking = true;
+            StartCoroutine(ShrinkEvent());
             shrunk = false;
         }
-        isShrinking = false;
+      
 
     }
    
