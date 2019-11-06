@@ -7,10 +7,7 @@ public class Conveyor : MonoBehaviour
     Rigidbody item;
     Vector3 movingDirection;
 
-    bool objectOnBelt;
-
     public float pushForce;
-
     public bool active;
 
     void Start()
@@ -23,7 +20,6 @@ public class Conveyor : MonoBehaviour
         item = collision.gameObject.GetComponent<Rigidbody>();
         if (active)
         {
-           
             //item.AddForce(movingDirection * pushForce);
             item.velocity = pushForce * movingDirection * Time.deltaTime;
             //item.transform.Translate(movingDirection * pushForce * Time.deltaTime);

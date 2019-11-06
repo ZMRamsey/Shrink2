@@ -14,5 +14,6 @@ public class Box : MonoBehaviour
         Vector3 boxSize = box.bounds.size;
         body = GetComponent<Rigidbody>();
         body.centerOfMass = body.centerOfMass + (Vector3.down * (boxSize.y * cOfMScale));
+        body.sleepThreshold = 0.0f;
     }
 }

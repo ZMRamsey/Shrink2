@@ -19,7 +19,7 @@ public class PlayerMove : MonoBehaviour
 
     [SerializeField] private KeyCode ShrinkKey;
     private bool isShrinking;
-    private bool shrunk;
+    public bool shrunk;
 
     private void Awake()
     {

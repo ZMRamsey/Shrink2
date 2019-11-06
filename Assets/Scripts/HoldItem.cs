@@ -18,20 +18,23 @@ public class HoldItem : MonoBehaviour
 
     void PickUp()
     {
-        Debug.DrawRay(transform.position, guide.transform.forward, Color.magenta);
-        if (Physics.Raycast(transform.position, guide.transform.forward, out RaycastHit hit, reach))
+        if (!movement.shrunk)
         {
-            item = hit.collider.gameObject; 
-            if (item.tag == "Box")
+            Debug.DrawRay(transform.position, guide.transform.forward, Color.magenta);
+            if (Physics.Raycast(transform.position, guide.transform.forward, out RaycastHit hit, reach))
             {
-                //Pick up box
-                holding = true;
+                item = hit.collider.gameObject;
+                if (item.tag == "Box")
+                {
+                    //Pick up box
+                    holding = true;
+                }
+                else if (item.tag == "Button")
+                {
+                    //Press the button
+                }
+                //else nothing
             }
-            else if (item.tag == "Button")
-            {
-                //Press the button
-            }
-            //else nothing
         }
     }
 
