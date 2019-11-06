@@ -1,26 +1,28 @@
 fileFormatVersion: 2
-guid: aa051c40c6ab9864ea1ce04cfd96c7ff
+guid: baeaa8b6a16004e46bec2e219ad4d229
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: Box001
-    100004: Cylinder001
-    400000: //RootNode
-    400002: Box001
-    400004: Cylinder001
-    2100000: Material.001
-    2100002: Material
-    2100004: No Name
-    2300000: //RootNode
-    2300002: Box001
-    2300004: Cylinder001
-    3300000: //RootNode
-    3300002: Box001
-    3300004: Cylinder001
-    4300000: Cylinder
-    4300002: Box001
-    4300004: Cylinder001
+    100000: Box001
+    100002: //RootNode
+    100004: Cylinder004
+    100006: GeoSphere001
+    400000: Box001
+    400002: //RootNode
+    400004: Cylinder004
+    400006: GeoSphere001
+    2100000: Material.003
+    2100002: Material.001
+    2100004: Material
+    2300000: Box001
+    2300002: Cylinder004
+    2300004: GeoSphere001
+    3300000: Box001
+    3300002: Cylinder004
+    3300004: GeoSphere001
+    4300000: Box001
+    4300002: Cylinder004
+    4300004: GeoSphere001
   externalObjects: {}
   materials:
     importMaterials: 1
