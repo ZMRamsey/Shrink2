@@ -5,11 +5,13 @@ using UnityEngine;
 public class HoldItem : MonoBehaviour
 {
     bool holding = false;
-    Vector3 lookDirection;
     public float reach;
-    public PlayerMove movement;
     GameObject item;
+    public Component camera;
     public GameObject guide;
+    public PlayerMove movement;
+    [SerializeField] KeyCode HoldKey;
+
 
     private void Start()
     {
@@ -41,10 +43,8 @@ public class HoldItem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //lookDirection = movement.GetLookDirection();
-        lookDirection = guide.transform.rotation.eulerAngles;
 
-        if (Input.GetAxis("Interact") > 0)
+        if (Input.GetKeyDown(HoldKey))
         {
             if (!holding)
             {

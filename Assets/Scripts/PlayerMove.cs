@@ -78,17 +78,19 @@ public class PlayerMove : MonoBehaviour
     {
         if (Input.GetKeyDown(ShrinkKey) && !isShrinking && !shrunk)
         {
-
-            Vector3 newCenter = new Vector3(0f, 0.5f, 0f);
-            body.transform.localScale -= newCenter;
+          
+            charController.height = 0.5f;
+            Debug.Log(charController.radius);
+            charController.radius = 0.125f;
             shrunk = true;
             isShrinking = true;
 
         }
         else if (Input.GetKeyDown(ShrinkKey) && !isShrinking && shrunk)
         { 
-            Vector3 newCenter = new Vector3(0f, 0.5f, 0f);
-            body.transform.localScale += newCenter;
+            Vector3 newCenter = new Vector3(0.5f, 0.5f, 0f);
+            charController.height =2.0f;
+            charController.radius = 0.5f;
             shrunk = false;
         }
         isShrinking = false;
