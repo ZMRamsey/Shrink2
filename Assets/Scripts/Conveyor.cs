@@ -6,31 +6,26 @@ public class Conveyor : MonoBehaviour
 {
     Rigidbody item;
     Vector3 movingDirection;
+    ActivateComponent activateComponent;
 
     public float pushForce;
-    public bool active;
 
     void Start()
     {
         movingDirection = transform.up;
+        activateComponent = GetComponent<ActivateComponent>();
     }
 
     private void OnCollisionStay(Collision collision)
     {
         item = collision.gameObject.GetComponent<Rigidbody>();
-        if (active)
+        if (activateComponent.GetState())
         {
             //item.AddForce(movingDirection * pushForce);
             item.velocity = pushForce * movingDirection * Time.deltaTime;
             //item.transform.Translate(movingDirection * pushForce * Time.deltaTime);
         }
     }
-
-    public void SetActivate(bool state)
-    {
-        active = state;
-    }
-
 
     public void Invert()
     {
