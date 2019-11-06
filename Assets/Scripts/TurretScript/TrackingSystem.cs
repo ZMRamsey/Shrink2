@@ -25,6 +25,7 @@ public class TrackingSystem : MonoBehaviour
             if (transform.rotation != m_lookAtRotation)
             {
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, m_lookAtRotation, speed * Time.deltaTime);
+               
             }
         }
     }

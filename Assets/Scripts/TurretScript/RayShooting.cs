@@ -56,7 +56,7 @@ public class RayShooting : MonoBehaviour
                 {
                     rayLine.SetPosition(1, rayOrigin + (turretCamera.transform.forward * turretRange));
                 }
-            }
+            } 
         }
     }
     
