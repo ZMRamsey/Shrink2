@@ -27,15 +27,12 @@ public class RayShooting : MonoBehaviour
     {
         if (Time.time > nextFire)
         {
-            //Debug.Log("1");
-            //.Log(turretCamera);
             nextFire = Time.time + fireRate; // Store the timere of the last shot and use it in the if statement above for check if enogh time is pass.
 
             float angle = Quaternion.Angle(transform.rotation, Quaternion.LookRotation(target.transform.position - transform.position));
             
             if (angle < FOW)
             {
-                //Debug.Log("2");
                 StartCoroutine(ShotEffect());
 
                 Vector3 rayOrigin = turretCamera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.0f)); // Center of the turret camera.
@@ -59,7 +56,7 @@ public class RayShooting : MonoBehaviour
                 {
                     rayLine.SetPosition(1, rayOrigin + (turretCamera.transform.forward * turretRange));
                 }
-            } Debug.Log(angle < FOW); Debug.Log(angle); Debug.Log(FOW);
+            } 
         }
     }
     
