@@ -17,7 +17,17 @@ ModelImporter:
     3300002: coffe_maker
     4300000: coffe_maker
     4300002: coffe_kettle_lid
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: bc7ffca70a4661d44a18cb505de1a12d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: fdd2175fb7bcbb84c9e27d221aa043ea, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

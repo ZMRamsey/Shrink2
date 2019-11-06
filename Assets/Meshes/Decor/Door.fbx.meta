@@ -16,7 +16,12 @@ ModelImporter:
     3300002: door2 frame
     4300000: door2 frame
     4300002: door2
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: No Name
+    second: {fileID: 2100000, guid: 664f10e974d1efe4cb35250c8728e328, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

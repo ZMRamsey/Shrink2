@@ -17,7 +17,12 @@ ModelImporter:
     3300002: cubicle3_up
     4300000: cubicle3_down
     4300002: cubicle3_up
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: bc7ffca70a4661d44a18cb505de1a12d, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

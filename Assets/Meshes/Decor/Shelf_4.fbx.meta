@@ -34,7 +34,12 @@ ModelImporter:
     4300004: pCube10
     4300006: pCube11
     4300008: pCube9
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1.002
+    second: {fileID: 2100000, guid: 5b12132649337c643834aa2c2a505f7d, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
