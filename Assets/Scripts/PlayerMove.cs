@@ -7,10 +7,9 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private string horizontalInputName;
     [SerializeField] private string verticalInputName;
     [SerializeField] private float movementSpeed;
-
+    private GameObject playerLook;
     private CharacterController charController;
     private Rigidbody body;
-   
 
     [SerializeField] private AnimationCurve jumpFallOff;
     [SerializeField] private float jumpMultiplier;
@@ -26,10 +25,11 @@ public class PlayerMove : MonoBehaviour
 
     private void Awake()
     {
+
         charController = GetComponent<CharacterController>();
         body = GetComponent<Rigidbody>();
-
     }
+
 
     private void Update()
     {

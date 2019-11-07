@@ -28,7 +28,7 @@ Transform:
   m_LocalScale: {x: 1.196168, y: 1.0135309, z: 1.2008767}
   m_Children: []
   m_Father: {fileID: 7785332897832522363}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1450731821
 MonoBehaviour:
@@ -165,7 +165,7 @@ PrefabInstance:
     - target: {fileID: 7274683456144553613, guid: 8f8f6b9958a548d478702ec3e80c346b,
         type: 3}
       propertyPath: movementSpeed
-      value: 10
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7274683456144553613, guid: 8f8f6b9958a548d478702ec3e80c346b,
         type: 3}
@@ -207,6 +207,11 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6439621841205704827, guid: 8f8f6b9958a548d478702ec3e80c346b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7274683454212694945, guid: 8f8f6b9958a548d478702ec3e80c346b,
         type: 3}
       propertyPath: m_ProbeAnchor
@@ -240,7 +245,7 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 648466715333327405}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &8195750287296862294
+--- !u!1001 &5614907889072998761
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
