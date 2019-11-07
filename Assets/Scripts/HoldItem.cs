@@ -15,7 +15,7 @@ public class HoldItem : MonoBehaviour
 
     private void Start()
     {
-        
+
     }
 
     void PickUp()
@@ -33,7 +33,7 @@ public class HoldItem : MonoBehaviour
             else if (item.tag == "Button")
             {
                 item.GetComponent<ButtonController>().SetState();
-       
+
             }
             //else nothing
         }

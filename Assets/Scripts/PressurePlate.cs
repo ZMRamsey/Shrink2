@@ -5,6 +5,7 @@ using UnityEngine;
 public class PressurePlate : MonoBehaviour
 {
     bool isPressed;
+    public ActivateComponent activate;
 
     public bool GetState()
     {
@@ -14,10 +15,12 @@ public class PressurePlate : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         isPressed = true;
+        activate.SetState(true);
     }
 
     private void OnCollisionExit(Collision collision)
     {
         isPressed = false;
+        activate.SetState(false);
     }
 }
