@@ -56,6 +56,10 @@ public class PlayerLook : MonoBehaviour
         eulerRoation.x = value;
         transform.eulerAngles = eulerRoation;
     }
-}
 
-  
+
+    public void setFOV(float FOV)
+    {
+        Debug.Log("test");
+    }
+}

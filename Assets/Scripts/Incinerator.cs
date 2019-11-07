@@ -2,28 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// The incinerator script. Attach the script in a GameObject in the bottom of the incinerator.
+
 public class Incinerator : MonoBehaviour
 {
-    public int secBeforeActivation = 5;
-
-    //private float timer = 0;
-
     void OnCollisionEnter(Collision collision)
     {
         // Store the information of the game object colliding with the "collision" object.
         GameObject collidingObject = collision.collider.gameObject;
 
-        Debug.Log(collidingObject);
+        HealthScript health = collidingObject.GetComponent<HealthScript>();
 
+        //Debug.Log(collidingObject);
         if (collidingObject.tag == "Box") // Look for the tag of the game object stored above.
         {
-            collidingObject.SetActive(false);
-            // Here we should spawn the destroyed object in the spawning area.
+            health.Damage(100);
         }
     }
-
-    //private IEnumerator waiter()
-    //{
-    //    yield return new WaitForSeconds(3);
-    //}
 }
