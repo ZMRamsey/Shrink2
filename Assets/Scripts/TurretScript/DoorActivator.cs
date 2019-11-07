@@ -6,36 +6,37 @@ using UnityEngine;
 
 public class DoorActivator : MonoBehaviour
 {
-    public GameObject activateObject;
-    public Vector3 direction;
+    public GameObject activateObject; // The object that we want to trigger.
+    public Vector3 direction; // The the direction where we want to move our object.
 
-    public float transitionSpeed;
+    public float transitionSpeed; // The speed of the movement.
 
-    private Vector3 pointA;
-    private Vector3 pointB;
-    private Vector3 pointC;
+    private Vector3 pointA; // The inizial point.
+    private Vector3 pointB; // The point of destination.
+    private Vector3 pointC; // The point needed for the inverse movement.
     private bool isColliding;
     private bool shouldMove;
 
     private float t = 0;
 
     void Start()
-    {
+    {   // Set the starting Point, the point of the first activation and the point for the inverse activation.
         pointA = activateObject.transform.position;
         pointB = pointA + direction;
         pointC = pointB - direction;
     }
 
     void Update()
-    {
-        if (shouldMove == true && isColliding == true)
+    {   
+        // First activation if the object is colliding.
+        if (isColliding == true)
         {
-            t += Time.deltaTime;
-
+            t += Time.deltaTime; // Needed for a smooth movement.
+            
             activateObject.transform.position = Vector3.Lerp(pointA, pointB, t / transitionSpeed);
         }
-
-        if (shouldMove == true && isColliding == false)
+        // The inverse action is triggered when nothing is colliding.
+        if (isColliding == false)
         {
             t += Time.deltaTime;
 
@@ -45,20 +46,13 @@ public class DoorActivator : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        isColliding = true;
         t = 0;
-        Debug.Log(isColliding);
-    }
-
-    private void OnCollisionStay(Collision collision)
-    {
-        shouldMove = true;
+        isColliding = true;
     }
 
     private void OnCollisionExit(Collision collision)
     {
         t = 0;
         isColliding = false;
-        Debug.Log(isColliding);
     }
 }
