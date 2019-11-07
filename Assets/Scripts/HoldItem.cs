@@ -28,7 +28,8 @@ public class HoldItem : MonoBehaviour
             {
                 //Pick up box
                 holding = true;
-                //item.GetComponent<Collider>().enabled = false;
+                item.GetComponent<Box>().Holding();
+               
             }
             else if (item.tag == "Button")
             {
@@ -52,12 +53,9 @@ public class HoldItem : MonoBehaviour
             else
             {
                 holding = false;
+                item.GetComponent<Box>().Dropped();
             }
         }
-        if (holding)
-        {
-            item.transform.position = guide.transform.position;
-            item.transform.rotation = Quaternion.Euler(guide.transform.up);
-        }
+     
     }
 }
