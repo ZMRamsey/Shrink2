@@ -12,6 +12,10 @@ ModelImporter:
     400004: outer001.001
     400006: outer001.002
     2100000: No Name
+    2100002: Material.002
+    2100004: Material.003
+    2100006: Material.004
+    2100008: Material.001
     2300000: outer001
     2300002: outer001.001
     2300004: outer001.002
@@ -21,7 +25,17 @@ ModelImporter:
     4300000: outer001
     4300002: outer001.001
     4300004: outer001.002
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: 63ca8cd60cfcb6d42953e70f74b76307, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.004
+    second: {fileID: 2100000, guid: f4ae9ca4ce2fac24386ad27b3c760942, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
