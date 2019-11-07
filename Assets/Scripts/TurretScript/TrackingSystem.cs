@@ -21,9 +21,7 @@ public class TrackingSystem : MonoBehaviour
             if (lastKnowPosition != target.transform.position)
             {
                 lastKnowPosition = target.transform.position;
-                //Debug.Log(lastKnowPosition);
                 lookAtRotation = Quaternion.LookRotation(lastKnowPosition - transform.position);
-                //Debug.Log(lookAtRotation);
             }
 
             if (transform.rotation != lookAtRotation)
