@@ -395,7 +395,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2225100573445433832}
   - component: {fileID: 2225100573445433835}
-  - component: {fileID: 6959607837639495183}
   m_Layer: 0
   m_Name: hand with animations
   m_TagString: Untagged
@@ -438,19 +437,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &6959607837639495183
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2225100573445433833}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 763b69ae08313594d8688bd23cf2e065, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  armAnim: {fileID: 2225100573445433835}
 --- !u!1 &2225100573675508624
 GameObject:
   m_ObjectHideFlags: 0
