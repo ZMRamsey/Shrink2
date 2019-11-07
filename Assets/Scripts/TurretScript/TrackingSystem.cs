@@ -3,32 +3,36 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Used for tracking the Target.
+
 public class TrackingSystem : MonoBehaviour
 {
 
     public float speed = 3.0f;
-    public GameObject m_target = null;
-    Vector3 m_lastKnowPosition = Vector3.zero;
-    Quaternion m_lookAtRotation;
+    public GameObject target = null;
+    Vector3 lastKnowPosition = Vector3.zero;
+    Quaternion lookAtRotation;
+
 
     // Update is called once per frame
     void Update()
     {
-        if (m_target)
+        if (target)
         {
-            if (m_lastKnowPosition != m_target.transform.position)
+            if (lastKnowPosition != target.transform.position)
             {
-                m_lastKnowPosition = m_target.transform.position;
-                m_lookAtRotation = Quaternion.LookRotation(m_lastKnowPosition - transform.position);
+                lastKnowPosition = target.transform.position;
+                //Debug.Log(lastKnowPosition);
+                lookAtRotation = Quaternion.LookRotation(lastKnowPosition - transform.position);
+                //Debug.Log(lookAtRotation);
             }
 
-            if (transform.rotation != m_lookAtRotation)
+            if (transform.rotation != lookAtRotation)
             {
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, m_lookAtRotation, speed * Time.deltaTime);
-               
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, lookAtRotation, speed * Time.deltaTime);
             }
         }
     }
+
 
     bool SetTarget(GameObject target)
     {
@@ -37,7 +41,7 @@ public class TrackingSystem : MonoBehaviour
             return false;
         }
 
-        m_target = target;
+        this.target = target;
 
         return true;
     }
