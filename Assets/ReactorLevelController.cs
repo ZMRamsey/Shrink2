@@ -13,6 +13,8 @@ public class ReactorLevelController : MonoBehaviour
     public PressurePlate plate1;
     public PressurePlate plate2;
     public LightPulse reactor;
+    public ButtonController panel1;
+    public ButtonController panel2;
     public float ventPush;
 
     // Start is called before the first frame update
@@ -42,6 +44,14 @@ public class ReactorLevelController : MonoBehaviour
                 //Delay
                 entranceVent.GetComponent<Rigidbody>().AddForce(Vector3.up * ventPush * 3);
                 entranceVent.GetComponent<Rigidbody>().AddForce(Vector3.left * ventPush * 3);
+
+                if(panel1.GetState())
+                {
+                    if (panel2.GetState())
+                    {
+                        Debug.Log("congrats");
+                    }
+                }
             }
             else
             {

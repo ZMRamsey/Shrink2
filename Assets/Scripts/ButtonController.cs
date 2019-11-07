@@ -21,7 +21,7 @@ public class ButtonController : MonoBehaviour
         {
             isPressed = true;
         }
-
+        Debug.Log(isPressed);
     }
 }
     

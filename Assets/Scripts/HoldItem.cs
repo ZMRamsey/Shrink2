@@ -33,7 +33,7 @@ public class HoldItem : MonoBehaviour
             else if (item.tag == "Button")
             {
                 item.GetComponent<ButtonController>().SetState();
-
+                Debug.Log("Button pressed");
             }
             //else nothing
         }
