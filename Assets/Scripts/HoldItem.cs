@@ -9,34 +9,33 @@ public class HoldItem : MonoBehaviour
     GameObject item;
     public Component camera;
     public GameObject guide;
-    public PlayerMove movement;
-    [SerializeField] KeyCode HoldKey;
 
+
+    [SerializeField] KeyCode HoldKey;
 
     private void Start()
     {
-        
+
     }
 
     void PickUp()
     {
-        if (!movement.shrunk)
+        Debug.DrawRay(transform.position, camera.transform.forward, Color.magenta);
+        if (Physics.Raycast(transform.position, camera.transform.forward, out RaycastHit hit, reach))
         {
-            Debug.DrawRay(transform.position, guide.transform.forward, Color.magenta);
-            if (Physics.Raycast(transform.position, guide.transform.forward, out RaycastHit hit, reach))
+            item = hit.collider.gameObject;
+            if (item.tag == "Box")
             {
-                item = hit.collider.gameObject;
-                if (item.tag == "Box")
-                {
-                    //Pick up box
-                    holding = true;
-                }
-                else if (item.tag == "Button")
-                {
-                    //Press the button
-                }
-                //else nothing
+                //Pick up box
+                holding = true;
+                //item.GetComponent<Collider>().enabled = false;
             }
+            else if (item.tag == "Button")
+            {
+                item.GetComponent<ButtonController>().SetState();
+
+            }
+            //else nothing
         }
     }
 

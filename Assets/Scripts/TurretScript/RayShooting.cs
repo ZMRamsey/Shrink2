@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Raycast shooting script
+
 public class RayShooting : MonoBehaviour
 {
     public int damage = 10;
@@ -23,6 +25,7 @@ public class RayShooting : MonoBehaviour
         turretCamera = GetComponentInChildren<Camera>();
     }
 
+
     void Update()
     {
         if (Time.time > nextFire)
@@ -38,7 +41,10 @@ public class RayShooting : MonoBehaviour
                 Vector3 rayOrigin = turretCamera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.0f)); // Center of the turret camera.
                 RaycastHit hit; // Store the information if our ray hit a game object with an collider component attached.
 
-                rayLine.SetPosition(0, projectileSpawn.position); // Set the start position of the ray in the projectile spawn position.
+                //Vector3 vector3 = new Vector3(0.0f, 0.4f, 0.0f);
+                //Vector3 targetPosition = (projectileSpawn.position - vector3);
+
+                rayLine.SetPosition(0, (projectileSpawn.position)); // Set the start position of the ray in the projectile spawn position.
 
                 if (Physics.Raycast(rayOrigin, turretCamera.transform.forward, out hit, turretRange))
                 {
@@ -56,10 +62,11 @@ public class RayShooting : MonoBehaviour
                 {
                     rayLine.SetPosition(1, rayOrigin + (turretCamera.transform.forward * turretRange));
                 }
-            }
+            } 
         }
     }
     
+
     private IEnumerator ShotEffect()
     {
         rayLine.enabled = true;
