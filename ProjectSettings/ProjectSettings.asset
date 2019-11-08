@@ -607,6 +607,7 @@ PlayerSettings:
       daydreamIconForeground: {fileID: 0}
       daydreamIconBackground: {fileID: 0}
   cloudServicesEnabled:
+    Collab: 1
     UNet: 1
   luminIcon:
     m_Name: 
@@ -627,10 +628,10 @@ PlayerSettings:
   facebookXfbml: 0
   facebookFrictionlessRequests: 1
   apiCompatibilityLevel: 6
-  cloudProjectId: 178febf7-48c4-435e-a9d3-b09ec51051b2
+  cloudProjectId: 416215b0-0469-4db8-8557-afca88d2b6c9
   framebufferDepthMemorylessMode: 0
   projectName: Shrink2
-  organizationId: unity_l5omafuuuwzpig
+  organizationId: georgeetherington
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0

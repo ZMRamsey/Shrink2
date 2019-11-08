@@ -15,8 +15,8 @@ public class DoorActivator : MonoBehaviour
     private Vector3 pointB; // The point of destination.
     private Vector3 pointC; // The point needed for the inverse movement.
     private bool isColliding;
-    private bool shouldMove;
-
+    public bool shouldMove;
+    
     private float t = 0;
 
     void Start()
@@ -32,14 +32,12 @@ public class DoorActivator : MonoBehaviour
         if (isColliding == true)
         {
             t += Time.deltaTime; // Needed for a smooth movement.
-            
             activateObject.transform.position = Vector3.Lerp(pointA, pointB, t / transitionSpeed);
         }
         // The inverse action is triggered when nothing is colliding.
         if (isColliding == false)
         {
             t += Time.deltaTime;
-
             activateObject.transform.position = Vector3.Lerp(activateObject.transform.position, pointC, t / transitionSpeed);
         }
     }
@@ -53,6 +51,21 @@ public class DoorActivator : MonoBehaviour
     private void OnCollisionExit(Collision collision)
     {
         t = 0;
+        Debug.Log(this);
         isColliding = false;
+    }
+
+    public void SetState(bool check)
+    {
+        t = 0;
+        if(!check && !shouldMove)
+        {
+            isColliding = false;
+        }
+        else
+        {
+            isColliding = true;
+        }
+
     }
 }
