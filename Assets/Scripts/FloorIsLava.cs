@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class FloorIsLava : MonoBehaviour
 {
-    public GameObject floor; //is lava
     public int damage;
 
     HealthScript health;
