@@ -18,13 +18,11 @@ public class HealthScript : MonoBehaviour
         if (currentHealth <= 0)
         {
             gameObject.SetActive(false);
+            if (spawnArea != null)
+            {
+                respawnArea();
+            }
         }
-
-        if (spawnArea != null)
-        {
-            respawnArea();
-        }
-        else return;
     }
 
 
@@ -33,5 +31,6 @@ public class HealthScript : MonoBehaviour
     {
         gameObject.SetActive(true);
         gameObject.transform.position = spawnArea.transform.position;
+        currentHealth = 100;
     }
 }
