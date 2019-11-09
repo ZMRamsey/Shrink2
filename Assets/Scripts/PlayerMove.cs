@@ -7,7 +7,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private string horizontalInputName;
     [SerializeField] private string verticalInputName;
     [SerializeField] private float movementSpeed;
-
+    private GameObject playerLook;
     private CharacterController charController;
     private Rigidbody body;
 
@@ -18,13 +18,18 @@ public class PlayerMove : MonoBehaviour
 
     [SerializeField] private KeyCode ShrinkKey;
     private bool isShrinking;
-    private bool shrunk;
+    public bool shrunk;
+
+    private float heightVal;
+    private float heightRad;
 
     private void Awake()
     {
+
         charController = GetComponent<CharacterController>();
         body = GetComponent<Rigidbody>();
     }
+
 
     private void Update()
     {
@@ -54,6 +59,7 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
+
     private IEnumerator JumpEvent()
     {
         charController.slopeLimit = 90.0f;
@@ -72,24 +78,45 @@ public class PlayerMove : MonoBehaviour
 
     }
 
+    private IEnumerator ShrinkEvent()
+    {
+       if(shrunk)
+        {
+            heightVal = 0.5f;
+            heightRad = 0.125f;
+        }
+        else
+        {
+            heightVal = -0.5f;
+            heightRad = -0.125f;
+        }
+        
+        do
+        {
+            yield return new WaitForSeconds(0.01f);
+            charController.height += heightVal;
+            charController.radius += heightRad;
+            if (charController.height == 0.5f || charController.height == 2.0f){
+                isShrinking = false;
+            }
+        } while (isShrinking);
+    }
     private void ShrinkInput()
     {
         if (Input.GetKeyDown(ShrinkKey) && !isShrinking && !shrunk)
         {
-
-            Vector3 newCenter = new Vector3(0f, 0.5f, 0f);
-            body.transform.localScale -= newCenter;
-            shrunk = true;
             isShrinking = true;
-
+            StartCoroutine(ShrinkEvent());    
+            shrunk = true;
         }
         else if (Input.GetKeyDown(ShrinkKey) && !isShrinking && shrunk)
-        { 
-            Vector3 newCenter = new Vector3(0f, 0.5f, 0f);
-            body.transform.localScale += newCenter;
+        {
+            isShrinking = true;
+            StartCoroutine(ShrinkEvent());
             shrunk = false;
         }
-        isShrinking = false;
+      
+
     }
    
 }
